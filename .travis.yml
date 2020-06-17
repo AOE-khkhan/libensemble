@@ -91,13 +91,7 @@ install:
   - conda install $COMPILERS
   - conda install libblas libopenblas # Prevent 'File exists' error
 
-  - if [[ "$TRAVIS_PYTHON_VERSION" == "3.8" ]]; then
-      conda install nlopt mpi4py scipy mpich;
-      export PETSC_CONFIGURE_OPTIONS='--with-batch';
-      pip install petsc petsc4py;
-    else
-      conda install nlopt petsc4py petsc $MUMPS mpi4py scipy $MPI;
-    fi
+  - conda install nlopt petsc4py petsc $MUMPS mpi4py scipy $MPI;
 
     # Begin: Dependencies only for regression tests
   - pip install DFO-LS
